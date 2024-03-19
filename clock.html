@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>"BASIC" Calculator by the G9 SJnians</title>
+  <style>
+    input[type="button"] {
+      width: 50px;
+      height: 50px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Calculator by SJnians</h2>
+  <table>
+    <tr>
+      <td colspan="4">
+        <input type="text" id="result" disabled>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="button" value="7" onclick="appendNumber('7')"></td>
+      <td><input type="button" value="8" onclick="appendNumber('8')"></td>
+      <td><input type="button" value="9" onclick="appendNumber('9')"></td>
+      <td><input type="button" value="/" onclick="appendOperator('/')"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="4" onclick="appendNumber('4')"></td>
+      <td><input type="button" value="5" onclick="appendNumber('5')"></td>
+      <td><input type="button" value="6" onclick="appendNumber('6')"></td>
+      <td><input type="button" value="-" onclick="appendOperator('-')"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="1" onclick="appendNumber('1')"></td>
+      <td><input type="button" value="2" onclick="appendNumber('2')"></td>
+      <td><input type="button" value="3" onclick="appendNumber('3')"></td>
+      <td><input type="button" value="+" onclick="appendOperator('+')"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="0" onclick="appendNumber('0')"></td>
+      <td><input type="button" value="." onclick="appendDecimal()"></td>
+      <td><input type="button" value="C" onclick="clearResult()"></td>
+      <td><input type="button" value="=" onclick="calculateResult()"></td>
+    </tr>
+  </table>
+
+  <script>
+    function appendNumber(num) {
+      document.getElementById('result').value += num;
+    }
+
+    function appendOperator(operator) {
+      document.getElementById('result').value += operator;
+    }
+
+    function appendDecimal() {
+      const currentResult = document.getElementById('result').value;
+      if (!currentResult.includes('.')) {
+        document.getElementById('result').value += '.';
+      }
+    }
+
+    function clearResult() {
+      document.getElementById('result').value = '';
+    }
+
+    function calculateResult() {
+      const currentResult = document.getElementById('result').value;
+      try {
+        document.getElementById('result').value = eval(currentResult);
+      } catch (error) {
+        document.getElementById('result').value = 'Error';
+      }
+    }
+  </script>
+
+</body>
+</html>
